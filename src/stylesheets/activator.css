@@ -1,0 +1,11 @@
+.heading {
+  padding: 0% 0% 2% 0%;
+}
+
+@media (max-width: 500px) {
+  .heading {
+    margin-top: 7%;
+    margin-bottom: 7%;
+    font-size: 1rem; /* Font size for smaller screens */
+  }
+}
