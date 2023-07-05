@@ -10,6 +10,7 @@ function startSim(V0_in, bw_in, ke_in, sig_in) {
   const gridSize = (q1.dx / q1.angstromStar).toExponential(2);
   const timeStep = (q1.dt * 1e15).toExponential(2);
   return {
+    q1,
     potentialBarrier,
     potentialBarrierWidth,
     electronEnergy,
