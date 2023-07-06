@@ -14,13 +14,7 @@ const frames = [];
 
 ///////////////////////////////////////////////////////////////////////////////////////
 function graphicChart(q1) {
-  console.log("q1.tt: ", q1.tt);
-  console.log("q1.ll: ", q1.ll);
   for (let nn = 0; nn < q1.tt; nn++) {
-    // Barrier
-    xArr2.push(q1.lx[nn] / q1.angstromStar);
-    yArr2.push(q1.Vx[nn] / getMaxValue(q1.Vx));
-
     q1.fdtdUpdate();
     if (nn % 50 === 0) {
       tstr = "Time = " + String(round(nn * q1.dt * 1e15, 4)) + " fs";
@@ -28,10 +22,13 @@ function graphicChart(q1) {
       // Wave
       xArr1.push(q1.lx[nn] / q1.angstromStar);
       yArr1.push(q1.psimag[nn] / getMaxValue(q1.psimag));
-      //   console.log(q1.psimag[nn]);
-      //   console.log(getMaxValue(q1.psimag));
+
+      // Barrier
+      xArr2.push(q1.lx[nn] / q1.angstromStar);
+      yArr2.push(q1.Vx[nn] / getMaxValue(q1.Vx));
     }
   }
+  console.log(yArr2);
   ///////////////////////////////////////////////////////////////////////////////////////////
 
   //   for (let i = 0; i < q1.tt; i++) {
@@ -45,7 +42,6 @@ function graphicChart(q1) {
   //     });
   //   }
 
-  console.log(yArr1);
   const trace1 = {
     x: [...xArr1],
     y: [...yArr1],
