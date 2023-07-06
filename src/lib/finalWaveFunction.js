@@ -1,14 +1,5 @@
 import Plotly from "plotly.js-dist-min";
-
-function getMaxValue(arr) {
-  let max = arr[0];
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] > max) {
-      max = arr[i];
-    }
-  }
-  return max;
-}
+import { getMaxValue } from "./getMaxValue.js";
 
 function finalWaveFunction(q1) {
   const trace1xArr = [];

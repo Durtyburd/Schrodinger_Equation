@@ -1,5 +1,6 @@
 import Plotly from "plotly.js-dist-min";
 import { finalWaveFunction } from "./finalWaveFunction.js";
+import { getMaxValue } from "./getMaxValue.js";
 import { round } from "mathjs";
 
 let tstr = 0;
@@ -10,16 +11,6 @@ const yArr2 = [];
 
 // frames for animation
 const frames = [];
-
-function getMaxValue(arr) {
-  let max = arr[0];
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] > max) {
-      max = arr[i];
-    }
-  }
-  return max;
-}
 
 ///////////////////////////////////////////////////////////////////////////////////////
 function graphicChart(q1) {
