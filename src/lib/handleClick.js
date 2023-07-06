@@ -1,5 +1,5 @@
 import { startSim } from "./startSim.js";
-import { staticChart } from "./staticChart.js";
+import { renderingCharts } from "./renderingCharts.js";
 
 function handleClick(stateV0, statebw, statesig, stateke) {
   const {
@@ -11,19 +11,19 @@ function handleClick(stateV0, statebw, statesig, stateke) {
     gridSize,
     timeStep,
   } = startSim(stateV0, statebw, statesig, stateke);
-  staticChart(q1);
+  renderingCharts(q1);
 
-  //   console.log("");
-  //   console.log("Potential barrier =", potentialBarrier, "eV");
-  //   console.log("Potential barrier width =", potentialBarrierWidth, "A");
-  //   console.log(
-  //     "(The boundary of the simulation domain is assumed to be an infinite barrier)"
-  //   );
-  //   console.log("Electron energy =", electronEnergy, "eV");
-  //   console.log("Electron spread =", electronSpread, "A");
-  //   console.log("");
-  //   console.log("Grid size =", gridSize, "A");
-  //   console.log("Time step =", timeStep, "fs");
+  console.log("");
+  console.log("Potential barrier =", potentialBarrier, "eV");
+  console.log("Potential barrier width =", potentialBarrierWidth, "A");
+  console.log(
+    "(The boundary of the simulation domain is assumed to be an infinite barrier)"
+  );
+  console.log("Electron energy =", electronEnergy, "eV");
+  console.log("Electron spread =", electronSpread, "A");
+  console.log("");
+  console.log("Grid size =", gridSize, "A");
+  console.log("Time step =", timeStep, "fs");
 }
 
 export { handleClick };
