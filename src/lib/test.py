@@ -50,6 +50,7 @@ class QMfdtd:
                                     + self.psir[1:self.ll - 1])
         self.psimag = self.psir**2 + self.psii**2
 
+
 def run_sim(V0_in, bw_in, ke_in, sig_in):
     q1 = QMfdtd(V0_in, bw_in, ke_in, sig_in)
     print('')
@@ -67,16 +68,14 @@ def run_sim(V0_in, bw_in, ke_in, sig_in):
     ax0.set_xlabel('position ($\AA$)')
     ax0.set_ylabel('$\Psi$')
     ax0.set_title('Initial wavefunctions (normalized)')
-    ###########################################################
-    # ax0.plot(q1.lx / sc.value('Angstrom star'), q1.psimag / np.amax(q1.psimag), label='$|\Psi|^2$')
-    
-    # ax0.plot(q1.lx / sc.value('Angstrom star'), q1.Vx / np.amax(q1.Vx), label='barrier')
-    # ax0.plot(q1.lx / sc.value('Angstrom star'), q1.psii / np.amax(q1.psii), label='$\Im[\Psi]$', alpha=0.5)
-    # ax0.plot(q1.lx / sc.value('Angstrom star'), q1.psir / np.amax(q1.psir), label='$\Re[\Psi]$', alpha=0.5)
-    # ax0.legend()
-    # fig0.show()
-    # fig0.tight_layout()
-    # fig0.canvas.draw()
+    ax0.plot(q1.lx / sc.value('Angstrom star'), q1.psimag / np.amax(q1.psimag), label='$|\Psi|^2$')
+    ax0.plot(q1.lx / sc.value('Angstrom star'), q1.Vx / np.amax(q1.Vx), label='barrier')
+    ax0.plot(q1.lx / sc.value('Angstrom star'), q1.psii / np.amax(q1.psii), label='$\Im[\Psi]$', alpha=0.5)
+    ax0.plot(q1.lx / sc.value('Angstrom star'), q1.psir / np.amax(q1.psir), label='$\Re[\Psi]$', alpha=0.5)
+    ax0.legend()
+    fig0.show()
+    fig0.tight_layout()
+    fig0.canvas.draw()
     input('Press enter to start the simulation...')
     fig1 = plt.figure()
     ax1 = fig1.add_subplot(111)
@@ -84,6 +83,7 @@ def run_sim(V0_in, bw_in, ke_in, sig_in):
     ax1.set_ylabel('norm magnitude')
     fig1.show()
     fig1.canvas.draw()
+    #########################################################
     for nn in range(0, q1.tt):
         q1.fdtd_update()
         if nn % 50 == 0:
@@ -96,12 +96,17 @@ def run_sim(V0_in, bw_in, ke_in, sig_in):
             ax1.set_xlabel('position ($\AA$)')
             ax1.set_ylabel('normalized magnitude')
             fig1.canvas.draw()
+            ########################################
     fig2 = plt.figure()
     ax2 = fig2.add_subplot(111)
     ax2.set_xlabel('position ($\AA$)')
     ax2.set_ylabel('$\Psi$')
     ax2.set_title('Final wavefunctions (normalized)')
     ax2.plot(q1.lx / sc.value('Angstrom star'), q1.psimag / np.amax(q1.psimag), label='$|\Psi|^2$')
-
-
-    
+    ax2.plot(q1.lx / sc.value('Angstrom star'), q1.Vx / np.amax(q1.Vx), label='barrier')
+    ax2.plot(q1.lx / sc.value('Angstrom star'), q1.psii / np.amax(q1.psii), label='$\Im[\Psi]$', alpha=0.5)
+    ax2.plot(q1.lx / sc.value('Angstrom star'), q1.psir / np.amax(q1.psir), label='$\Re[\Psi]$', alpha=0.5)
+    ax2.legend()
+    fig2.show()
+    fig2.tight_layout()
+    fig2.canvas.draw()

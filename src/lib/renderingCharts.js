@@ -1,4 +1,5 @@
 import Plotly from "plotly.js-dist-min";
+import { graphicChart } from "./graphicChart.js";
 
 function getMaxValue(arr) {
   let max = arr[0];
@@ -23,7 +24,7 @@ function renderingCharts(q1) {
     trace1xArr.push(q1.lx[i] / q1.angstromStar);
     trace1yArr.push(q1.psimag[i] / getMaxValue(q1.psimag));
     trace2xArr.push(q1.lx[i] / q1.angstromStar);
-    trace2yArr.push(q1.Vx[i] / getMaxValue(q1.Vx)); //
+    trace2yArr.push(q1.Vx[i] / getMaxValue(q1.Vx));
     trace3xArr.push(q1.lx[i] / q1.angstromStar);
     trace3yArr.push(q1.psii[i] / getMaxValue(q1.psii));
     trace4xArr.push(q1.lx[i] / q1.angstromStar);
@@ -98,6 +99,9 @@ function renderingCharts(q1) {
   Plotly.newPlot("chart", data, layout, {
     responsive: true,
   });
+
+  // Renders next graph immediately
+  graphicChart(q1);
 }
 
 export { renderingCharts };

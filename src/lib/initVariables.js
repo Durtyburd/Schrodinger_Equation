@@ -53,7 +53,7 @@ class initVariables {
   }
 
   fdtdUpdate() {
-    for (let i = 1; i < this.ll.length - 1; i++) {
+    for (let i = 1; i < this.ll - 1; i++) {
       this.psii[i] =
         this.c1 * (this.psir[i + 1] - 2.0 * this.psir[i] + this.psir[i - 1]) -
         this.c2 * this.Vx[i] * this.psir[i] +

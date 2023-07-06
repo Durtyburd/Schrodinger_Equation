@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Schrodinger_Equation/static/css/main.64732e31.css",
-    "main.js": "/Schrodinger_Equation/static/js/main.be5637d7.js",
+    "main.js": "/Schrodinger_Equation/static/js/main.c3e13e99.js",
     "static/media/logo.png": "/Schrodinger_Equation/static/media/logo.17da70b03e5004b8ee7f.png",
     "index.html": "/Schrodinger_Equation/index.html",
     "main.64732e31.css.map": "/Schrodinger_Equation/static/css/main.64732e31.css.map",
-    "main.be5637d7.js.map": "/Schrodinger_Equation/static/js/main.be5637d7.js.map"
+    "main.c3e13e99.js.map": "/Schrodinger_Equation/static/js/main.c3e13e99.js.map"
   },
   "entrypoints": [
     "static/css/main.64732e31.css",
-    "static/js/main.be5637d7.js"
+    "static/js/main.c3e13e99.js"
   ]
 }
