@@ -1,22 +1,21 @@
-import React, { useState, useRef } from "react";
-import { TextField, Box, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { TextField, Box } from "@mui/material";
 import { handleClick } from "../lib/handleClick.js";
+import FirstChart from "./FirstChart.js";
 
 function Form() {
-  function scroll() {
-    if (stateV0 == 0 || statebw == 0 || stateke == 0 || statesig == 0) {
-      alert("Please input values.");
-    } else {
-      ref.current?.scrollIntoView({ behavior: "smooth" });
-    }
-  }
-  const ref = useRef(null);
-
   // State for user-inputted wave variables
   const [stateV0, setStateV0] = useState(0);
   const [statebw, setStatebw] = useState(0);
   const [statesig, setStatesig] = useState(0);
   const [stateke, setStateke] = useState(0);
+  const [chartData, setChartData] = useState(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const q1 = handleClick(stateV0, statebw, statesig, stateke);
+    setChartData(q1);
+  };
 
   return (
     <div style={{ marginTop: "1%" }}>
@@ -24,10 +23,7 @@ function Form() {
       <form
         display="flex"
         //On submit calls the handleClick function to begin wave rendering process
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleClick(stateV0, statebw, statesig, stateke);
-        }}
+        onSubmit={handleSubmit}
         align="center"
       >
         <Box
@@ -131,7 +127,6 @@ function Form() {
         </Box>
         <Box align="center">
           <button
-            onClick={scroll}
             color="primary"
             type="submit"
             style={{
@@ -144,6 +139,7 @@ function Form() {
           </button>
         </Box>
       </form>
+      {chartData && <FirstChart q1={chartData} />}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { startSim } from "./startSim.js";
-import { firstChart } from "./firstChart.js";
+import { firstChart } from "../components/FirstChart.js";
 
 function handleClick(stateV0, statebw, statesig, stateke) {
   const {
@@ -11,8 +11,7 @@ function handleClick(stateV0, statebw, statesig, stateke) {
     gridSize,
     timeStep,
   } = startSim(stateV0, statebw, statesig, stateke);
-  firstChart(q1);
-
+  return q1;
   // console.log("");
   // console.log("Potential barrier =", potentialBarrier, "eV");
   // console.log("Potential barrier width =", potentialBarrierWidth, "A");
