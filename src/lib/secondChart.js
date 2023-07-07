@@ -40,6 +40,7 @@ function secondChart(q1) {
     });
   }
   const finalFrames = [...firstFrames];
+  console.log(finalFrames);
 
   // traces for fixed lines
   const trace1 = {
@@ -65,7 +66,7 @@ function secondChart(q1) {
 
   // Chart layout
   const layout = {
-    title: "Time",
+    title: "Schrödinger Solution",
     displayModeBar: false, // Remove the mode bar
     font: { size: 18 },
     xaxis: {
