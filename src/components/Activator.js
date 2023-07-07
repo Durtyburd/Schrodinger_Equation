@@ -21,6 +21,15 @@ function Activator() {
           A 1D visual representation solved by the <br />
           FDTD (finite-difference time-domain) method.
         </Typography>
+        <Typography sx={{ paddingBottom: "2%", alignSelf: "center" }}>
+          *TIP: Enter these inputs. <br />
+          Height of potential barrier: 600 <br />
+          potential barrier width: .25
+          <br />
+          initial spread: 500
+          <br />
+          kinetic energy: .8*
+        </Typography>
         <br />
       </Box>
     </>

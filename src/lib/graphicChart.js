@@ -1,9 +1,7 @@
 import Plotly from "plotly.js-dist-min";
 import { finalWaveFunction } from "./finalWaveFunction.js";
 import { getMaxValue } from "./getMaxValue.js";
-import { round } from "mathjs";
 
-let tstr = 0;
 const xArr1 = [];
 const yArr1 = [];
 const xArr2 = [];
@@ -17,43 +15,46 @@ function graphicChart(q1) {
   for (let nn = 0; nn < q1.tt; nn++) {
     q1.fdtdUpdate();
     if (nn % 50 === 0) {
-      tstr = "Time = " + String(round(nn * q1.dt * 1e15, 4)) + " fs";
+      // Wave // they should only iterate 219 times - nn is a placeholder but it should be something else
+      //   xArr1.push(q1.lx / q1.angstromStar);
+      //   yArr1.push(q1.psimag / getMaxValue(q1.psimag));
+      xArr1.push(q1.lx.map((value) => value / q1.angstromStar));
+      yArr1.push(q1.psimag.map((value) => value / getMaxValue(q1.psimag)));
 
-      // Wave
-      xArr1.push(q1.lx[nn] / q1.angstromStar);
-      yArr1.push(q1.psimag[nn] / getMaxValue(q1.psimag));
-
-      // Barrier
-      xArr2.push(q1.lx[nn] / q1.angstromStar);
-      yArr2.push(q1.Vx[nn] / getMaxValue(q1.Vx));
+      // Barrier // they should only iterate 219 times - nn is a placeholder but it should be something else
+      //   xArr2.push(q1.lx[nn] / q1.angstromStar);
+      //   yArr2.push(q1.Vx[nn] / getMaxValue(q1.Vx));
+      xArr2.push(q1.lx.map((value) => value / q1.angstromStar));
+      yArr2.push(q1.Vx.map((value) => value / getMaxValue(q1.Vx)));
     }
   }
-  console.log(yArr2);
   ///////////////////////////////////////////////////////////////////////////////////////////
 
-  //   for (let i = 0; i < q1.tt; i++) {
-  //     frames.push({
-  //       data: [
-  //         {
-  //           x: [xArr1[i]],
-  //           y: [yArr1[i]],
-  //         },
-  //       ],
-  //     });
-  //   }
+  for (let i = 0; i < xArr1.length; i++) {
+    frames.push({
+      data: [
+        {
+          x: [...xArr1[i]],
+          y: [...yArr1[i]],
+        },
+      ],
+    });
+  }
 
   const trace1 = {
-    x: [...xArr1],
-    y: [...yArr1],
+    x: [],
+    y: [],
     line: {
       color: "black",
     },
     name: "|Ψ|^2",
   };
 
+  //   console.log("xarr: ", xArr1[0]);
+  //   console.log("yarr: ", yArr1[0]);
   const trace2 = {
-    x: [...xArr2],
-    y: [...yArr2],
+    x: [...xArr2[0]],
+    y: [...yArr2[0]],
     line: {
       color: "purple",
     },
@@ -65,7 +66,7 @@ function graphicChart(q1) {
 
   // Chart layout
   const layout = {
-    title: tstr,
+    title: "Time",
     displayModeBar: false, // Remove the mode bar
     font: { size: 18 },
     xaxis: {
@@ -93,12 +94,12 @@ function graphicChart(q1) {
     responsive: true,
   }).then(function () {
     // Animate the graph
-    // Plotly.animate("chart2", frames, {
-    //   color: "black",
-    //   frame: { duration: 50 },
-    //   transition: { duration: 1000 },
-    //   mode: "immediate",
-    // });
+    Plotly.animate("chart2", frames, {
+      color: "black",
+      frame: { duration: 10 },
+      transition: { duration: 1000 },
+      mode: "immediate",
+    });
   });
 
   // Renders final chart immediately
